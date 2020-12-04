@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import Map from './Components/Map.js';
 import Loader from './Components/Loader';
 import Header from './Components/Header';
+require('dotenv').config()
 
 
 function App() {
