@@ -3,6 +3,7 @@ import FireMarker from './FireMarker.js';
 import FireInfoBox from './FireInfoBox';
 import {useState} from 'react';
 
+
 const Map = ({eventData, center, zoom}) => {
     const [locationInfo, setLocationInfo] = useState(null);
 
@@ -18,10 +19,12 @@ const Map = ({eventData, center, zoom}) => {
             return null
     });
 
+    const key = `${process.env.REACT_APP_API_KEY}`
+
     return (
         <div className='map'>
             <GoogleMapReact 
-                bootstrapURLKeys={{key:''}}
+                bootstrapURLKeys={{key: key}}
                 defaultCenter={center}
                 defaultZoom={zoom}>
                 {markers}
@@ -36,7 +39,7 @@ Map.defaultProps = {
         lat: 42.3265,
         lng: -122.8756
     },
-    zoom: 6
+    zoom: 5
 }
 
 export default Map
