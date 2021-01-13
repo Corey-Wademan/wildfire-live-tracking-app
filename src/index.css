@@ -34,15 +34,17 @@ body {
 }
 
 .fire-info {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 50px;
-  right: 50px;
-  width: 400px;
-  min-height: 200px;
-  padding: 20px;
+  top: 1%;
+  left: 1%;
+  width: 35%;
+  height: auto;
+  padding: 15px;
   background-color: rgba(214, 212, 212, 0.507);
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 2vw;
 }
 
 .fire-info ul {
@@ -68,5 +70,15 @@ body {
 }
 
 .header-text {
-  font-size: 16px;
+  font-size: 2.5vw;
+}
+
+/*----Media Queries----*/
+@media (min-width: 768px) {
+  .fire-info {
+    font-size: 1.5vw;
+  }
+  .header-text {
+    font-size: 2vw;
+  }
 }
