@@ -4,21 +4,23 @@ import FireInfoBox from './FireInfoBox';
 import {useState} from 'react';
 
 
-const Map = ({eventData, center, zoom}) => {
+function Map ({eventData, center, zoom}) {
     const [locationInfo, setLocationInfo] = useState(null);
 
     const markers = eventData.map(event => {
         if (event.categories[0].id === 8) {
             return ( 
                 <FireMarker 
-                        lat={event.geometries[0].coordinates[1]} 
-                        lng={event.geometries[0].coordinates[0]}
-                        onClick={() => setLocationInfo({id: event.id, title: event.title })} />
+                    lat={event.geometries[0].coordinates[1]} 
+                    lng={event.geometries[0].coordinates[0]}
+                    key={event.id}
+                    displayInfo={() => setLocationInfo({id: event.id, title: event.title })} 
+                />
             )
         }
             return null
     });
-
+ 
     const key = `${process.env.REACT_APP_API_KEY}`
 
     return (
@@ -29,7 +31,7 @@ const Map = ({eventData, center, zoom}) => {
                 defaultZoom={zoom}>
                 {markers}
             </GoogleMapReact>
-            {locationInfo && <FireInfoBox info={locationInfo} />}
+            {locationInfo && <FireInfoBox closeBox={() => setLocationInfo(null)} info={locationInfo} />}
         </div>
     )
 }
@@ -39,7 +41,7 @@ Map.defaultProps = {
         lat: 42.3265,
         lng: -122.8756
     },
-    zoom: 5
+    zoom: 4
 }
 
 export default Map
